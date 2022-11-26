@@ -94,13 +94,12 @@ function startGame() {
         gameBoard = createGameBoard();
         const board = createGameBoard();
         const body = document.getElementById("gameBody");
-        body.style.display = "inline"
+        body.style.display = "inline";
         body.appendChild(board);
+        createActualBoard();
+        initGameState();
+        document.getElementById("gameScore").innerHTML = setScore();
     }
-
-    createActualBoard();
-    initGameState();
-    document.getElementById("gameScore").innerHTML = setScore();
 }
 
 // cria o tabuleiro visivel
