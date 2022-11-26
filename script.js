@@ -70,8 +70,12 @@ function createGameScore() {
     const gameScore = document.createElement("div");
     gameScore.id = "gameScore";
     gameScore.className = "gameScore";
-    gameScore.innerHTML = `Brancas: ${whitesCount}.\nPretas: ${blacksCount}`;
+    gameScore.innerHTML = setScore();
     return gameScore;
+}
+
+function setScore() {
+    return `Brancas: ${whitesCount}\nPretas: ${blacksCount}`;;
 }
 
 function createStartButton() {
@@ -96,6 +100,7 @@ function startGame() {
 
     createActualBoard();
     initGameState();
+    document.getElementById("gameScore").innerHTML = setScore();
 }
 
 // cria o tabuleiro visivel
@@ -147,7 +152,7 @@ function createPiece(id, color) {
     actualBoard[id] = color;
     const cell = document.getElementById(`cell-${id}`);
     const piece = document.createElement("div");
-    piece.className = `piece-${color}`;
+    piece.className = colors[color];
     piece.id = `piece-${id}`;
 
     if (color == whites) whitesCount++;
@@ -166,7 +171,7 @@ function onClickCell(cellId) {
 function makeMove(cellId) {
     // verifica se a celula está dentro do tabuleiro
     const isEmpty = !cells[cellId].firstChild;
-    if (isOnBoard && isEmpty) {
+    if (isEmpty) {
 
     }
 }
@@ -188,7 +193,7 @@ function findCell(cellId, move, currentPlayer) {
 }
 
 function cellsColor(id) {
-    if (!board[id].firstChild) {
+    if (!cells[id].firstChild) {
         return false;
-    } return board[id].firstChild.className;
+    } return cells[id].firstChild.className;
 }
