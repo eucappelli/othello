@@ -43,6 +43,7 @@ function createGameBody() {
     const body = document.createElement("div");
     const gameScore = createGameScore();
     body.id = "gameBody";
+    body.className = "gameBody";
     body.appendChild(gameScore);
     document.body.appendChild(body);
 }
@@ -89,6 +90,7 @@ function startGame() {
         gameBoard = createGameBoard();
         const board = createGameBoard();
         const body = document.getElementById("gameBody");
+        body.style.display = "inline"
         body.appendChild(board);
     }
 
@@ -135,22 +137,21 @@ function createActualBoard() {
 function initGameState() {
     turn = player;
 
-    createPiece(44, whites);
-    createPiece(55, whites);
-    createPiece(54, blacks);
-    createPiece(45, blacks);
+    createPiece(27, whites);
+    createPiece(36, whites);
+    createPiece(35, blacks);
+    createPiece(28, blacks);
 }
 
 function createPiece(id, color) {
     actualBoard[id] = color;
-    const cell = cells[id];
+    const cell = document.getElementById(`cell-${id}`);
     const piece = document.createElement("div");
     piece.className = `piece-${color}`;
     piece.id = `piece-${id}`;
 
     if (color == whites) whitesCount++;
     else blacksCount++;
-
     cell.appendChild(piece);
 }
 
@@ -164,7 +165,6 @@ function onClickCell(cellId) {
 
 function makeMove(cellId) {
     // verifica se a celula está dentro do tabuleiro
-    const isOnBoard = cellId % 10 >= 1 && cellId % 10 <= 8;
     const isEmpty = !cells[cellId].firstChild;
     if (isOnBoard && isEmpty) {
 
