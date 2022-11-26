@@ -44,6 +44,7 @@ body {
     border-radius: 50%;
     height: 85%;
     width: 85%;
+    border: 2px solid rgb(66, 66, 66);
 }
 
 .white {
@@ -52,6 +53,7 @@ body {
     border-radius: 50%;
     height: 85%;
     width: 85%;
+    border: 2px solid rgb(66, 66, 66);
 }
 
 #board {
